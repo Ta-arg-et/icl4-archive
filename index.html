@@ -1,23 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ICL-4 Archive</title>
+  <title>ICL-4 Secure Archive</title>
   <style>
     body {
-      background-color: black;
-      color: #00ff99;
-      font-family: monospace;
-      padding: 2em;
+      background-color: #0b0b0b;
+      color: #00ffcc;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
     }
+
+    #container, #content {
+      max-width: 600px;
+      text-align: center;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      background: black;
+      border: 1px solid #00ffcc;
+      color: #00ffcc;
+      margin-top: 10px;
+      width: 80%;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+      background: #002222;
+      color: #00ffcc;
+      border: 1px solid #00ffcc;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    #error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    #content {
+      display: none;
+    }
+
     h1 {
-      text-shadow: 0 0 5px #0f0;
+      text-transform: uppercase;
+      text-shadow: 0 0 5px #00ffcc;
     }
+
+    .seal {
+      margin-bottom: 20px;
+    }
+
   </style>
 </head>
 <body>
-  <h1>[ACCESS RESTRICTED]</h1>
-  <p>Entity ID: ICL-4-A</p>
-  <p>Status: Uncontained</p>
-  <p><a href="https://youtu.be/m3Y5pbbCVAs?si=BO3eK_EgaQsCz2n4" target="_blank">View Evidence</a></p>
+
+  <div id="container">
+    <img class="seal" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/US-Government-Seal.svg/1200px-US-Government-Seal.svg.png" width="100" alt="Gov Seal">
+    <h1>Department of Digital Containment</h1>
+    <p>[ CLASSIFIED ACCESS ONLY ]</p>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <br>
+    <button onclick="checkPassword()">Enter</button>
+    <div id="error"></div>
+  </div>
+
+  <div id="content">
+    <h1>ICL-4 ENTITY DOSSIER</h1>
+    <p>Status: [UNCONTAINED]</p>
+    <p>View attached video logs, transmissions, and terminal reports.</p>
+    <a href="https://youtu.be/YOURVIDEOID" target="_blank" style="color:#00ffcc;">ACCESS VIDEO EVIDENCE</a>
+  </div>
+
+  <script>
+    const correctPassword = "deltaICL4"; // <<< this
+
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value;
+      const error = document.getElementById("error");
+      if (input === correctPassword) {
+        document.getElementById("container").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      } else {
+        error.textContent = "ACCESS DENIED";
+      }
+    }
+  </script>
+
 </body>
 </html>
